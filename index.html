@@ -21,21 +21,21 @@
       </div>  
       <div class="subtitle has-text-centered">
       <br>  
-	      From 0.05412561 BTC: <p id="euroBTC"></p>€
+	      From 0.05412561 BTC: <span id="euroBTC"></span>€
         <br>
-        From 1.53951157 ETH: <p id="euroETH"></p>€
+        From 1.53951157 ETH: <span id="euroETH"></span>€
         <br>
-        Total: <p id="total"></p>€
+        Total: <span id="total"></span>€
         <br>
-        For each one: <p id="forEach"></p>€
+        For each one: <span id="forEach"></span>€
         <br>
         Investment from each one: 310€
       </div>
       <div class="title has-text-centered"> 
         <br>
-        Profit for each one: <p id="profitForEach"></p>€    
+        Profit for each one: <span id="profitForEach"></span>€    
         <br>
-        Percentage profit for each one: <p id="percentageForEach"></p>%  
+        Percentage profit for each one: <span id="percentageForEach"></span>%  
       </div>
     </div>
   </div>
@@ -47,13 +47,13 @@
                 </p>
 
                 <p>Using 
-                        <a href="https://www.raspberrypi.org/" target="_blank" style="text-decoration: none; color:#C31C4A;"><i class="fab fa-raspberry-pi"></i></a>
-                        <a href="https://laravel.com/" target="_blank" style="text-decoration: none; color:#FF2D20;"><i class="fab fa-laravel"></i></a>
-                        <a href="https://vuejs.org/" target="_blank" style="text-decoration: none; color:#41B883;"><i class="fab fa-vuejs"></i></a>
-                        <a href="https://bulma.io" target="_blank" style="text-decoration: none; color: #00D1B2;"><i class="fas fa-bold"></i></a>
+                        <a href="https://www.raspberrypi.org/" target="_blank" ><i class="fab fa-raspberry-pi"></i></a>
+                        <a href="https://laravel.com/" target="_blank" ><i class="fab fa-laravel"></i></a>
+                        <a href="https://vuejs.org/" target="_blank" ><i class="fab fa-vuejs"></i></a>
+                        <a href="https://bulma.io" target="_blank" ><i class="fas fa-bold"></i></a>
 
                     and 
-                        <a href="https://fontawesome.com" target="_blank" style="text-decoration: none; color:#339AF0;"><i class="fab fa-font-awesome"></i></a>
+                        <a href="https://fontawesome.com" target="_blank" ><i class="fab fa-font-awesome"></i></a>
                 </p>
             </div>
         </footer>  
@@ -70,24 +70,25 @@
     Httpreq.send(null);
     let responseBTC = JSON.parse(Httpreq.responseText);
     let euroBTC = (responseBTC.last_trade_price * btcRui) + (responseBTC.last_trade_price * btcMined);
-    document.getElementById('euroBTC').innerHTML = euroBTC;	    
+    document.getElementById('euroBTC').innerHTML = Math.round(euroBTC * 100) / 100;	
+		    
     var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/ETH-EUR',false);
     Httpreq.send(null);
-    let responseETH = JSON.parse(Httpreq.responseText);   
-    document.getElementById('euroBTC').innerHTML = euroBTC;
+    let responseETH = JSON.parse(Httpreq.responseText); 
     let euroETH = responseETH.last_trade_price * ethMined;
-    document.getElementById('euroETH').innerHTML = euroETH;
+    document.getElementById('euroETH').innerHTML = Math.round(euroETH * 100) / 100;
+		    
     let total = euroBTC + euroETH;
-    document.getElementById('total').innerHTML = total;
+    document.getElementById('total').innerHTML = Math.round(total * 100) / 100;
     let forEach = total/4;
-    document.getElementById('forEach').innerHTML = forEach;
+    document.getElementById('forEach').innerHTML = Math.round(forEach * 100) / 100;
 
     let profitForEach = forEach-310;
-    document.getElementById('profitForEach').innerHTML = profitForEach;
+    document.getElementById('profitForEach').innerHTML = Math.round(profitForEach * 100) / 100;
 
     let percentageForEach = (100 * (forEach-310)) / 310;
-    document.getElementById('percentageForEach').innerHTML = percentageForEach;
+    document.getElementById('percentageForEach').innerHTML = Math.round(percentageForEach * 100) / 100;
 		    };
     </script>
 </html>
