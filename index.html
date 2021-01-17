@@ -20,21 +20,21 @@
       </div>  
       <div class="subtitle has-text-centered">
       <br>  
-        From 0.05412561 BTC: €
+	      From 0.05412561 BTC: <p id="euroBTC"></p>€
         <br>
-        From 1.53951157 ETH: €
+        From 1.53951157 ETH: <p id="euroETH"></p>€
         <br>
-        Total: €
+        Total: <p id="total"></p>€
         <br>
-        For each one: €
+        For each one: <p id="forEach"></p>€
         <br>
         Investment from each one: 310€
       </div>
       <div class="title has-text-centered"> 
         <br>
-        Profit for each one: €    
+        Profit for each one: <p id="profitForEach"></p>€    
         <br>
-        Percentage profit for each one: %  
+        Percentage profit for each one: <p id="percentageForEach"></p>%  
       </div>
     </div>
   </div>
@@ -58,5 +58,33 @@
         </footer>  
         </div>
     </body>
-    <script></script>
+    <script>
+    let btcRui = 0.03282;
+    let ethMined = 1.53951157;
+    let btcMined = 0.02130561; 
+	    
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/BTC-EUR',false);
+    Httpreq.send(null);
+    let responseBTC = JSON.parse(Httpreq.responseText);
+    let euroBTC = (responseBTC.last_trade_price * btcRui) + (responseBTC.last_trade_price * btcMined);
+    document.getElementById('euroBTC').innerHTML = euroBTC;	    
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/ETH-EUR',false);
+    Httpreq.send(null);
+    let responseETH = JSON.parse(Httpreq.responseText);   
+    document.getElementById('euroBTC').innerHTML = euroBTC;
+    let euroETH = responseETH.last_trade_price * ethMined;
+    document.getElementById('euroETH').innerHTML = euroETH;
+    let total = euroBTC + euroETH;
+    document.getElementById('total').innerHTML = total;
+    let forEach = total/4;
+    document.getElementById('forEach').innerHTML = forEach;
+
+    let profitForEach = forEach-310;
+    document.getElementById('profitForEach').innerHTML = profitForEach;
+
+    let percentageForEach = (100 * (forEach-310)) / 310;
+    document.getElementById('percentageForEach').innerHTML = percentageForEach;
+    </script>
 </html>
