@@ -5,9 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Current gains</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-		    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-extensions@4.0.0/dist/css/bulma-extensions.min.css">
-		    <link rel="script" href="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js">
-		    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-extensions@4.0.0/dist/css/bulma-extensions.min.css">
+	<link rel="script" href="https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     </head>
     <body>
         <div id="app">
@@ -59,6 +60,7 @@
         </div>
     </body>
     <script>
+	    window.onload = function(){
     let btcRui = 0.03282;
     let ethMined = 1.53951157;
     let btcMined = 0.02130561; 
@@ -86,5 +88,6 @@
 
     let percentageForEach = (100 * (forEach-310)) / 310;
     document.getElementById('percentageForEach').innerHTML = percentageForEach;
+		    };
     </script>
 </html>
