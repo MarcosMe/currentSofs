@@ -64,11 +64,11 @@
     var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",'https://blockchain.info/ticker',false);
     Httpreq.send(null);
-    let responseBTC = JSON.parse(Httpreq.responseText);
-    console.log(responseBTC[EUR].last);
-    let euroBTC = (responseBTC[EUR].last * btcRui) + (responseBTC[EUR].last * btcMined);
-    console.log(euroBTC);
-    document.getElementById('euroBTC').innerHTML = Math.round(euroBTC * 100) / 100;	
+    let responseBTCticker = JSON.parse(Httpreq.responseText);
+    console.log(responseBTCticker[EUR].last);
+    let euroBTCticker = (responseBTCticker[EUR].last * btcRui) + (responseBTCticker[EUR].last * btcMined);
+    console.log(euroBTCticker);
+    document.getElementById('euroBTC').innerHTML = Math.round(euroBTCticker * 100) / 100;	
 		    
     var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/BTC-EUR',false);
