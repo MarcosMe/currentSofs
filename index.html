@@ -65,6 +65,7 @@
     Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/BTC-EUR',false);
     Httpreq.send(null);
     let responseBTC = JSON.parse(Httpreq.responseText);
+    console.log(responseBTC);
     let euroBTC = (responseBTC.last_trade_price * btcRui) + (responseBTC.last_trade_price * btcMined);
     console.log(euroBTC);
     document.getElementById('euroBTC').innerHTML = Math.round(euroBTC * 100) / 100;	
@@ -73,6 +74,7 @@
     Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/ETH-EUR',false);
     Httpreq.send(null);
     let responseETH = JSON.parse(Httpreq.responseText); 
+    console.log(responseETH);
     let euroETH = responseETH.last_trade_price * ethMined;
     console.log(euroETH);
     document.getElementById('euroETH').innerHTML = Math.round(euroETH * 100) / 100;
