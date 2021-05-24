@@ -66,6 +66,7 @@
     Httpreq.send(null);
     let responseBTC = JSON.parse(Httpreq.responseText);
     let euroBTC = (responseBTC.last_trade_price * btcRui) + (responseBTC.last_trade_price * btcMined);
+    console.log(euroBTC);
     document.getElementById('euroBTC').innerHTML = Math.round(euroBTC * 100) / 100;	
 		    
     var Httpreq = new XMLHttpRequest(); // a new request
@@ -73,6 +74,7 @@
     Httpreq.send(null);
     let responseETH = JSON.parse(Httpreq.responseText); 
     let euroETH = responseETH.last_trade_price * ethMined;
+    console.log(euroETH);
     document.getElementById('euroETH').innerHTML = Math.round(euroETH * 100) / 100;
 		    
     let total = euroBTC + euroETH;
