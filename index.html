@@ -19,9 +19,9 @@
       </div>  
       <div class="subtitle has-text-white has-text-centered">
       <br>  
-	      From 0.01153114 BTC: <span id="euroBTC"></span>€
+	      From 0.01153114 BTC
         <br>
-        Total: <span id="total"></span>€
+        Current EUR: <span id="total"></span>€
         <br>
         Investment: 500€
       </div>
@@ -70,7 +70,7 @@
     let profit = total-500;
     document.getElementById('profit').innerHTML = Math.round(profit * 100) / 100;
 
-    let percentage = (100 * (profit-500)) / 310;
+    let percentage = (100 * (profit-500)) / 500;
     document.getElementById('percentage').innerHTML = Math.round(percentage * 100) / 100;
 		    };
     </script>
