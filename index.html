@@ -72,7 +72,7 @@
 
     let percentage = (100 * (profit-500)) / 500;
     if(percentage <= 0){
-	    percentage=percentage-100;
+	    percentage=percentage+100;
     }
 		    console.log(percentage);
     document.getElementById('percentage').innerHTML = Math.round(percentage * 100) / 100;
