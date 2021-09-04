@@ -19,21 +19,17 @@
       </div>  
       <div class="subtitle has-text-white has-text-centered">
       <br>  
-	      From 0.05934561 BTC: <span id="euroBTC"></span>€
-        <br>
-        From 1.53951157 ETH: <span id="euroETH"></span>€
+	      From 0.01153114 BTC: <span id="euroBTC"></span>€
         <br>
         Total: <span id="total"></span>€
         <br>
-        For each one: <span id="forEach"></span>€
-        <br>
-        Investment from each one: 310€
+        Investment: 500€
       </div>
       <div class="title has-text-white has-text-centered"> 
         <br>
-        Profit for each one: <span id="profitForEach"></span>€    
+        Profit: <span id="profit"></span>€    
         <br>
-        Percentage profit for each one: <span id="percentageForEach"></span>%  
+        Percentage profit: <span id="percentage"></span>%  
       </div>
     </div>
   </div>
@@ -57,48 +53,25 @@
     </body>
     <script>
 	    window.onload = function(){
-    let btcRui = 0.03804;
-    let ethMined = 1.53951157;
-    let btcMined = 0.02130561; 
+    let btcSofs = 0.01153114;
 	    
     var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",'https://blockchain.info/ticker',false);
     Httpreq.send(null);
     let responseBTCticker = JSON.parse(Httpreq.responseText);
     console.log(responseBTCticker);
-    let euroBTCticker = (responseBTCticker.EUR.last * btcRui) + (responseBTCticker.EUR.last * btcMined);
+    let euroBTCticker = (responseBTCticker.EUR.last * btcSofs);
     console.log(euroBTCticker);
     document.getElementById('euroBTC').innerHTML = Math.round(euroBTCticker * 100) / 100;	
 		    
-    /*var Httpreq = new XMLHttpRequest(); // a new request
-    Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/BTC-EUR',false);
-    Httpreq.send(null);
-    let responseBTC = JSON.parse(Httpreq.responseText);
-    console.log(responseBTC);
-    let euroBTC = (responseBTC.last_trade_price * btcRui) + (responseBTC.last_trade_price * btcMined);
-    console.log(euroBTC);
-    document.getElementById('euroBTC').innerHTML = Math.round(euroBTC * 100) / 100;	
-	*/	    
-		    
-    var Httpreq = new XMLHttpRequest(); // a new request
-    Httpreq.open("GET",'https://api.blockchain.com/v3/exchange/tickers/ETH-EUR',false);
-    Httpreq.send(null);
-    let responseETH = JSON.parse(Httpreq.responseText); 
-    console.log(responseETH);
-    let euroETH = responseETH.last_trade_price * ethMined;
-    console.log(euroETH);
-    document.getElementById('euroETH').innerHTML = Math.round(euroETH * 100) / 100;
-		    
-    let total = euroBTCticker + euroETH;
+    let total = euroBTCticker;
     document.getElementById('total').innerHTML = Math.round(total * 100) / 100;
-    let forEach = total/4;
-    document.getElementById('forEach').innerHTML = Math.round(forEach * 100) / 100;
 
-    let profitForEach = forEach-310;
-    document.getElementById('profitForEach').innerHTML = Math.round(profitForEach * 100) / 100;
+    let profit = total-500;
+    document.getElementById('profit').innerHTML = Math.round(profit * 100) / 100;
 
-    let percentageForEach = (100 * (forEach-310)) / 310;
-    document.getElementById('percentageForEach').innerHTML = Math.round(percentageForEach * 100) / 100;
+    let percentage = (100 * (profit-500)) / 310;
+    document.getElementById('percentage').innerHTML = Math.round(percentage * 100) / 100;
 		    };
     </script>
 </html>
