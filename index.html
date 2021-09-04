@@ -21,7 +21,7 @@
       <br>  
 	      From 0.01153114 BTC
         <br>
-        Current EUR: <span id="total"></span>€
+        Current EUR: <span id="euroBTC"></span>€
         <br>
         Investment: 500€
       </div>
@@ -64,10 +64,10 @@
     console.log(euroBTCticker);
     document.getElementById('euroBTC').innerHTML = Math.round(euroBTCticker * 100) / 100;	
 		    
-    let total = euroBTCticker;
-    document.getElementById('total').innerHTML = Math.round(total * 100) / 100;
+    //let total = euroBTCticker;
+    //document.getElementById('total').innerHTML = Math.round(total * 100) / 100;
 
-    let profit = total-500;
+    let profit = euroBTCticker-500;
     document.getElementById('profit').innerHTML = Math.round(profit * 100) / 100;
 
     let percentage = (100 * (profit-500)) / 500;
