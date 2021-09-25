@@ -56,13 +56,23 @@
     let btcSofs = 0.01153114;
 	    
     var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET",'https://bitmb.pt/api?average=1',false);
+    Httpreq.send(null);
+    let responseBTCticker = JSON.parse(Httpreq.responseText);
+    console.log(responseBTCticker);
+    let euroBTCticker = (responseBTCticker * btcRui) + (responseBTCticker * btcMined);
+    console.log(euroBTCticker);
+    document.getElementById('euroBTC').innerHTML = Math.round(euroBTCticker * 100) / 100;		    
+		    
+    /*var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",'https://blockchain.info/ticker',false);
     Httpreq.send(null);
     let responseBTCticker = JSON.parse(Httpreq.responseText);
     console.log(responseBTCticker);
     let euroBTCticker = (responseBTCticker.EUR.last * btcSofs);
     console.log(euroBTCticker);
-    document.getElementById('euroBTC').innerHTML = Math.round(euroBTCticker * 100) / 100;	
+    document.getElementById('euroBTC').innerHTML = Math.round(euroBTCticker * 100) / 100;
+    */
 		    
     //let total = euroBTCticker;
     //document.getElementById('total').innerHTML = Math.round(total * 100) / 100;
